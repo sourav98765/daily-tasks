@@ -29,3 +29,5 @@ firebase deploy --project daliy385 --only hosting
 ```
 
 The site will be available at `https://daliy385.web.app`. Tasks remain saved in each visitor's browser and do not sync between devices.
+
+To configure GitHub deployments and have the Firebase CLI create the workflow and repository secret, run `firebase init hosting:github` from the repository root and follow its prompts. See the [Firebase GitHub integration guide](https://firebase.google.com/docs/hosting/github-integration).
