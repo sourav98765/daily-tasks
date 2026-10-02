@@ -25,7 +25,7 @@ To deploy manually, install and sign in to the Firebase CLI, create a Firebase p
 
 ```sh
 PORT=5000 BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/daily-tasks run build
-firebase deploy --project <FIREBASE_PROJECT_ID> --only hosting
+firebase deploy --project daliy385 --only hosting
 ```
 
-The site will be available at `https://<FIREBASE_PROJECT_ID>.web.app`. Tasks remain saved in each visitor's browser and do not sync between devices.
+The site will be available at `https://daliy385.web.app`. Tasks remain saved in each visitor's browser and do not sync between devices.
