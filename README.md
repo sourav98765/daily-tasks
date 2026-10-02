@@ -19,9 +19,13 @@ The Daily Tasks web app lives in `artifacts/daily-tasks`. It is a React and Vite
 
 ## Firebase Hosting
 
-The GitHub Actions workflow deploys the app to Firebase Hosting after pushes to `main`. It stays skipped until the Firebase project variable is configured. Add these in the repository's **Settings → Secrets and variables → Actions**:
+The Firebase Hosting configuration serves the production build from `artifacts/daily-tasks/dist/public` and rewrites app routes to `index.html`.
 
-- Repository variable `FIREBASE_PROJECT_ID` with your Firebase project ID.
-- Repository secret `FIREBASE_SERVICE_ACCOUNT` with a service account JSON key authorized to deploy to Firebase Hosting.
+To deploy manually, install and sign in to the Firebase CLI, create a Firebase project with Hosting enabled, and run:
 
-After adding both values, run the workflow from GitHub Actions once; later pushes to `main` deploy automatically. The site will be available at `https://<FIREBASE_PROJECT_ID>.web.app`. Tasks remain saved in each visitor's browser and do not sync between devices.
+```sh
+PORT=5000 BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/daily-tasks run build
+firebase deploy --project <FIREBASE_PROJECT_ID> --only hosting
+```
+
+The site will be available at `https://<FIREBASE_PROJECT_ID>.web.app`. Tasks remain saved in each visitor's browser and do not sync between devices.
